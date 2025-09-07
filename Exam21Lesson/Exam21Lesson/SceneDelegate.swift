@@ -30,7 +30,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = viewController
         self.window = window
     }
-
-
 }
 
