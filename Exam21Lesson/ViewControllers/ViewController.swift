@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     private let buttonNext = CostomButton(title: "Next", bgColor: .white, titleColor: .black)
     private let buttonFirst = CostomButton(title: "First", bgColor: .systemRed, titleColor: .white)
     
-    private var catsManager = CatsDataManager(cats: CatsManager().getCats())
+    var catsDataManager = CatsDataManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +36,16 @@ class ViewController: UIViewController {
     }
     
     private func last() -> Cat {
-       return catsManager.getLast()
+       return catsDataManager.getLast()
        
     }
     
     private func next() -> Cat  {
-        return catsManager.getNext()
+        return catsDataManager.getNext()
     }
     
     private func first() -> Cat  {
-        return catsManager.getFierst()
+        return catsDataManager.getFierst()
     }
     
     private func setupModel(cat: Cat) {
@@ -90,7 +90,7 @@ private extension ViewController {
     
     // MARK: - stupe Image
     func setupImage() {
-        catImage.setupImage(imageName: catsManager.getCurent().imageName)
+        catImage.setupImage(imageName: catsDataManager.getCurent().imageName)
         
         catImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
         catImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -98,7 +98,7 @@ private extension ViewController {
     
     // MARK: setup Text Label
     func setupTextLabel() {
-        catDescription.text = "\(catsManager.getCurent().name): \(catsManager.getCurent().description)"
+        catDescription.text = "\(catsDataManager.getCurent().name): \(catsDataManager.getCurent().description)"
         catDescription.numberOfLines = 0
         catDescription.textAlignment = .natural
         

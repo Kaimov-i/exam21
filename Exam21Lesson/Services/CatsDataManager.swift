@@ -7,14 +7,10 @@
 
 import Foundation
 
-class CatsDataManager {
+class CatsDataManager: CatsDataManagable {
     
-    private var cats: [Cat]
+    private var cats: [Cat] = []
     private var curent: Int = 0
-    
-    init(cats: [Cat]) {
-        self.cats = cats
-    }
     
     func getCurent() -> Cat {
         cats[curent]
@@ -37,5 +33,9 @@ class CatsDataManager {
     func getFierst() -> Cat {
         curent = 0
         return cats[curent]
+    }
+    
+    func getCats(cats: [Cat]) {
+        self.cats = cats
     }
 }
