@@ -24,15 +24,8 @@ class CostomCatView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+    override func layoutSubviews() {
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
     
     func setupImage(imageName: String) {
@@ -43,6 +36,17 @@ class CostomCatView: UIView {
         addSubview(imageView)
     }
     
+    private func setupLayout() {
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
+
     private func shadow() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -50,7 +54,4 @@ class CostomCatView: UIView {
         layer.shadowOpacity = 0.7
     }
     
-    override func layoutSubviews() {
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-    }
 }

@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController {
     
     private var stackView = UIStackView()
@@ -32,32 +30,29 @@ class ViewController: UIViewController {
         setupLayout()
         setupButtonsStackView()
         setupButtons()
+        buttonActions()
         setupImage()
         setupTextLabel()
     }
     
-    private func last() {
-        let cat = catsManager.getLast()
-    
+    private func last() -> Cat {
+       return catsManager.getLast()
+       
     }
     
-    private func next() {
-        let cat = catsManager.getNext()
-        
+    private func next() -> Cat  {
+        return catsManager.getNext()
     }
     
-    private func fierst() {
-        let cat = catsManager.getFierst()
-        
+    private func first() -> Cat  {
+        return catsManager.getFierst()
     }
     
     private func setupModel(cat: Cat) {
         catDescription.text = cat.description
         catImage.setupImage(imageName: cat.imageName)
-
     }
 }
-
 
 extension ViewController {
     // MARK: - setup Layout
@@ -84,7 +79,7 @@ extension ViewController {
 }
 
 private extension ViewController {
-    
+
     // MARK: - setup stack View
     func setupStackView() {
         stackView.distribution = .fill
@@ -121,31 +116,27 @@ private extension ViewController {
         buttonsStackView.addArrangedSubview(buttonNext)
     }
     
-    func setupButtons() {
-        
-        let lastButtonAction = UIAction { _ in
-           
+    func buttonActions() {
+        let lastButtonAction = UIAction { [self]  _ in
+            setupModel(cat: last())
         }
         
-        let nextButtonAction = UIAction { _ in
-            
+        let nextButtonAction = UIAction { [self] _ in
+            setupModel(cat: next())
         }
         
-        let fierstButtonAction = UIAction { _ in
-        
+        let fierstButtonAction = UIAction { [self] _ in
+            setupModel(cat: first())
         }
-        
-        
         
         buttonLast.addAction(lastButtonAction, for: .touchUpInside)
         buttonNext.addAction(nextButtonAction, for: .touchUpInside)
         buttonFirst.addAction(fierstButtonAction, for: .touchUpInside)
-        
+    }
+    
+    func setupButtons() {
         buttonNext.setTitleColor(.black, for: .normal)
         buttonFirst.setTitleColor(.white, for: .normal)
-        
-        buttonLast.addAction(lastButtonAction, for: .touchUpInside)
-        buttonNext.addAction(nextButtonAction, for: .touchUpInside)
         
         buttonFirst.widthAnchor.constraint(equalTo: buttonLast.widthAnchor).isActive = true
         buttonFirst.layer.shadowOpacity = 0
