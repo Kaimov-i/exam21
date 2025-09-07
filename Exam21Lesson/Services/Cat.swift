@@ -10,6 +10,5 @@ import Foundation
 struct Cat {
     let name: String
     let description: String
-    let number: Int
     let imageName: String
 }

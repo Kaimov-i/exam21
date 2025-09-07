@@ -17,7 +17,8 @@ class CatsDataManager {
     }
     
     func getLast() -> Cat {
-        cats[cats.count - 1]
+        curent = cats.count - 1
+        return cats[curent]
     }
     
     func getNext() -> Cat {

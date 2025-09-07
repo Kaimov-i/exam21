@@ -7,12 +7,14 @@
 
 import UIKit
 
-class CostomImageView: UIView {
+class CostomCatView: UIView {
     var imageView = UIImageView()
+    var imageName: String
     
-    init(imageName: String) {
+    init(imageName: String = "") {
+        self.imageName = imageName
         super.init(frame: .zero)
-        setupImage(name: imageName)
+        setupImage(imageName: imageName)
         setupLayout()
     }
     
@@ -32,9 +34,13 @@ class CostomImageView: UIView {
         ])
     }
     
-    func setupImage(name: String) {
-        imageView.image = UIImage(named: name)
-        
+    func setupImage(imageName: String) {
+        imageView.image = UIImage(named: imageName)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
         addSubview(imageView)
     }
+    
+
 }

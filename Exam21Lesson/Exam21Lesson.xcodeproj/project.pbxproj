@@ -11,6 +11,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		89D75C8E2E6D75A800D40672 /* Exceptions for "CostomElements" folder in "Exam21Lesson" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CostomButton.swift,
+				CostomCatView.swift,
+			);
+			target = 89E9B5142E6545CE00DD8550 /* Exam21Lesson */;
+		};
+		89D75C8F2E6D75A800D40672 /* Exceptions for "Services" folder in "Exam21Lesson" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Cat.swift,
+				CatsDataManager.swift,
+				CatsManager.swift,
+			);
+			target = 89E9B5142E6545CE00DD8550 /* Exam21Lesson */;
+		};
 		89E9B5272E6545D100DD8550 /* Exceptions for "Exam21Lesson" folder in "Exam21Lesson" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -21,6 +38,27 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		89D75C832E6D75A800D40672 /* CostomElements */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				89D75C8E2E6D75A800D40672 /* Exceptions for "CostomElements" folder in "Exam21Lesson" target */,
+			);
+			path = CostomElements;
+			sourceTree = "<group>";
+		};
+		89D75C862E6D75A800D40672 /* Services */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				89D75C8F2E6D75A800D40672 /* Exceptions for "Services" folder in "Exam21Lesson" target */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		89D75C882E6D75A800D40672 /* ViewControllers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		89E9B5172E6545CE00DD8550 /* Exam21Lesson */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -47,6 +85,9 @@
 			children = (
 				89E9B5172E6545CE00DD8550 /* Exam21Lesson */,
 				89E9B5162E6545CE00DD8550 /* Products */,
+				89D75C832E6D75A800D40672 /* CostomElements */,
+				89D75C862E6D75A800D40672 /* Services */,
+				89D75C882E6D75A800D40672 /* ViewControllers */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +115,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				89D75C882E6D75A800D40672 /* ViewControllers */,
 				89E9B5172E6545CE00DD8550 /* Exam21Lesson */,
 			);
 			name = Exam21Lesson;
