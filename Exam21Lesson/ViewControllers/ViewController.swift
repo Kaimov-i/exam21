@@ -115,7 +115,7 @@ private extension ViewController {
         buttonsStackView.addArrangedSubview(buttonLast)
         buttonsStackView.addArrangedSubview(buttonNext)
     }
-    
+    // MARK: Button Actions
     func buttonActions() {
         let lastButtonAction = UIAction { [self]  _ in
             setupModel(cat: last())
@@ -133,7 +133,7 @@ private extension ViewController {
         buttonNext.addAction(nextButtonAction, for: .touchUpInside)
         buttonFirst.addAction(fierstButtonAction, for: .touchUpInside)
     }
-    
+    //MARK: Setup Button
     func setupButtons() {
         buttonNext.setTitleColor(.black, for: .normal)
         buttonFirst.setTitleColor(.white, for: .normal)
