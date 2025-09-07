@@ -8,14 +8,15 @@
 import UIKit
 
 class CostomCatView: UIView {
-    var imageView = UIImageView()
-    var imageName: String
+    private let imageView = UIImageView()
+    private let imageName: String
     
     init(imageName: String = "") {
         self.imageName = imageName
         super.init(frame: .zero)
         setupImage(imageName: imageName)
         setupLayout()
+        shadow()
     }
     
     @available(*, unavailable)
@@ -23,7 +24,7 @@ class CostomCatView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -42,5 +43,14 @@ class CostomCatView: UIView {
         addSubview(imageView)
     }
     
-
+    private func shadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 5, height: 5)
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.7
+    }
+    
+    override func layoutSubviews() {
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+    }
 }

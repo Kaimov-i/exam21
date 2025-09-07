@@ -9,15 +9,21 @@ import Foundation
 
 class CatsDataManager {
     
-    var cats: [Cat]
-    var curent: Int = 0
+    private var cats: [Cat]
+    private var curent: Int = 0
     
     init(cats: [Cat]) {
         self.cats = cats
     }
     
+    func getCurent() -> Cat {
+        cats[curent]
+    }
+    
     func getLast() -> Cat {
-        curent = cats.count - 1
+        if curent > 0 {
+            curent -= 1
+        }
         return cats[curent]
     }
     
@@ -31,6 +37,5 @@ class CatsDataManager {
     func getFierst() -> Cat {
         curent = 0
         return cats[curent]
-        
     }
 }

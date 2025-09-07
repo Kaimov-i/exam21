@@ -18,23 +18,22 @@ class CostomButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupButton(title: String, bgColor: UIColor, titleColor: UIColor) {
-        configuration = .bordered()
-        
-        setTitle(title, for: .normal)
-        setTitleColor(titleColor, for: .normal)
-        backgroundColor = bgColor
-        layer.cornerRadius = 10
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 8, height: 8)
-        
-        layer.shadowRadius = 10
-        layer.shadowOpacity = 0.7
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+    }
+    
+    private func setupButton(title: String, bgColor: UIColor, titleColor: UIColor) {
+        configuration = .bordered()
+        setTitle(title, for: .normal)
+        setTitleColor(titleColor, for: .normal)
+        backgroundColor = bgColor
+        
+        layer.cornerRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 8, height: 8)
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 0.7
     }
 }
