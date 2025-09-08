@@ -19,7 +19,17 @@ class ViewController: UIViewController {
     private let buttonNext = CostomButton(title: "Next", bgColor: .white, titleColor: .black)
     private let buttonFirst = CostomButton(title: "First", bgColor: .systemRed, titleColor: .white)
     
-    private var catsManager = CatsDataManager(cats: CatsManager().getCats())
+    var catsDataManager: CatsDataManagable
+    
+    init(catsDataManager: CatsDataManagable) {
+        self.catsDataManager = catsDataManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,21 +46,21 @@ class ViewController: UIViewController {
     }
     
     private func last() -> Cat {
-       return catsManager.getLast()
-       
+        catsDataManager.getLast()
+        
     }
     
     private func next() -> Cat  {
-        return catsManager.getNext()
+        catsDataManager.getNext()
     }
     
     private func first() -> Cat  {
-        return catsManager.getFierst()
+        catsDataManager.getFierst()
     }
     
     private func setupModel(cat: Cat) {
         catDescription.text = cat.description
-        catImage.setupImage(imageName: cat.imageName)
+        catImage.updateImage(imageName: cat.imageName)
     }
 }
 
@@ -79,7 +89,7 @@ extension ViewController {
 }
 
 private extension ViewController {
-
+    
     // MARK: - setup stack View
     func setupStackView() {
         stackView.distribution = .fill
@@ -90,7 +100,7 @@ private extension ViewController {
     
     // MARK: - stupe Image
     func setupImage() {
-        catImage.setupImage(imageName: catsManager.getCurent().imageName)
+        catImage.updateImage(imageName: catsDataManager.getCurent().imageName)
         
         catImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
         catImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -98,7 +108,7 @@ private extension ViewController {
     
     // MARK: setup Text Label
     func setupTextLabel() {
-        catDescription.text = "\(catsManager.getCurent().name): \(catsManager.getCurent().description)"
+        catDescription.text = "\(catsDataManager.getCurent().name): \(catsDataManager.getCurent().description)"
         catDescription.numberOfLines = 0
         catDescription.textAlignment = .natural
         
@@ -142,6 +152,3 @@ private extension ViewController {
         buttonFirst.layer.shadowOpacity = 0
     }
 }
-
-
-

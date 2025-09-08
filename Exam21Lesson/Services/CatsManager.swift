@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CatsManager {
+class CatsManager: CatsManagable {
     
     func getCats() -> [Cat] {
         [

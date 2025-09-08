@@ -9,12 +9,10 @@ import UIKit
 
 class CostomCatView: UIView {
     private let imageView = UIImageView()
-    private let imageName: String
     
-    init(imageName: String = "") {
-        self.imageName = imageName
+    init() {
         super.init(frame: .zero)
-        setupImage(imageName: imageName)
+        setupImage()
         setupLayout()
         shadow()
     }
@@ -28,8 +26,15 @@ class CostomCatView: UIView {
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
     
-    func setupImage(imageName: String) {
+    func updateImage(imageName: String) {
         imageView.image = UIImage(named: imageName)
+    }
+    
+}
+
+extension CostomCatView {
+    
+   private func setupImage() {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
@@ -46,7 +51,7 @@ class CostomCatView: UIView {
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-
+    
     private func shadow() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -54,4 +59,6 @@ class CostomCatView: UIView {
         layer.shadowOpacity = 0.7
     }
     
+    
 }
+
