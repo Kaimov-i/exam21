@@ -38,5 +38,4 @@ class CatsDataManager: CatsDataManagable {
     func getCats(cats: [Cat]) {
         self.cats = cats
     }
-    
 }
