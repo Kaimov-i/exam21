@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     }
     
     private func setupModel(cat: Cat) {
-        catDescription.text = cat.description
+        catDescription.text = cat.catDescription
         catImage.updateImage(imageName: cat.imageName)
     }
 }
@@ -108,7 +108,7 @@ private extension ViewController {
     
     // MARK: setup Text Label
     func setupTextLabel() {
-        catDescription.text = "\(catsDataManager.getCurent().name): \(catsDataManager.getCurent().description)"
+        catDescription.text = "\(catsDataManager.getCurent().name): \(catsDataManager.getCurent().catDescription)"
         catDescription.numberOfLines = 0
         catDescription.textAlignment = .natural
         

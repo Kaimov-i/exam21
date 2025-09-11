@@ -9,6 +9,20 @@ import Foundation
 
 struct Cat {
     let name: String
-    let description: String
+    let catDescription: String
     let imageName: String
+}
+
+//MARK: - Comparable
+extension Cat: Comparable {
+    static func < (lhs: Cat, rhs: Cat) -> Bool {
+        lhs.imageName < rhs.imageName
+    }
+}
+
+//MARK: - CustomStrigComparable
+extension Cat: CustomStringConvertible {
+    var description: String {
+        "Image name: \(imageName), description: \(catDescription)"
+    }
 }
