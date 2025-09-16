@@ -7,11 +7,19 @@
 
 import UIKit
 
+protocol ICostomButtonDelegate {
+    func addActions(for button: UIButton)
+}
+
+
 class CostomButton: UIButton {
+    
+    var delegate: ICostomButtonDelegate?
     
     init(title: String, bgColor: UIColor, titleColor: UIColor) {
         super.init(frame: .zero)
         setupButton(title: title, bgColor: bgColor, titleColor: titleColor)
+        actions()
     }
     
     required init?(coder: NSCoder) {
@@ -22,6 +30,13 @@ class CostomButton: UIButton {
         super.layoutSubviews()
         
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+    }
+    
+    func actions() {
+        let buttonAction = UIAction { [self] _ in
+            delegate?.addActions(for: self)
+        }
+        addAction(buttonAction, for: .touchUpInside)
     }
     
     private func setupButton(title: String, bgColor: UIColor, titleColor: UIColor) {

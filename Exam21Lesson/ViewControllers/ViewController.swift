@@ -152,3 +152,18 @@ private extension ViewController {
         buttonFirst.layer.shadowOpacity = 0
     }
 }
+
+extension ViewController: ICostomButtonDelegate {
+    
+    func addActions(for button: UIButton) {
+        
+        switch button {
+        case buttonLast: setupModel(cat: last())
+        case buttonNext: setupModel(cat: next())
+        case buttonFirst: setupModel(cat: first())
+        default:
+            break
+        }
+        
+    }
+}
