@@ -7,7 +7,10 @@
 
 import UIKit
 
-class CostomCatView: UIView {
+class CustomCatView: UIView {
+    
+    var nameIstance: String?
+    
     private let imageView = UIImageView()
     
     init() {
@@ -32,7 +35,7 @@ class CostomCatView: UIView {
     
 }
 
-extension CostomCatView {
+extension CustomCatView {
     
    private func setupImage() {
         imageView.contentMode = .scaleAspectFill
@@ -58,7 +61,5 @@ extension CostomCatView {
         layer.shadowRadius = 10
         layer.shadowOpacity = 0.7
     }
-    
-    
 }
 

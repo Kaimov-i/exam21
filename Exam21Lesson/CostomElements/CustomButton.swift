@@ -11,9 +11,10 @@ protocol ICostomButtonDelegate {
     func buttonDidTap(_ button: UIButton)
 }
 
-
-class CostomButton: UIButton {
+class CustomButton: UIButton {
     
+    var nameInstance: String?
+
     var delegate: ICostomButtonDelegate?
     
     init(title: String, bgColor: UIColor, titleColor: UIColor) {

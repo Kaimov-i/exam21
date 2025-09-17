@@ -11,13 +11,13 @@ class ViewController: UIViewController {
     
     private var stackView = UIStackView()
     private var buttonsStackView = UIStackView()
-    private var catImage = CostomCatView()
+    private var catImage = CustomCatView()
     private let catDescription = UILabel()
     private let catName = UILabel()
     
-    private let buttonLast = CostomButton(title: "Last", bgColor: .systemBlue, titleColor: .white)
-    private let buttonNext = CostomButton(title: "Next", bgColor: .white, titleColor: .black)
-    private let buttonFirst = CostomButton(title: "First", bgColor: .systemRed, titleColor: .white)
+    private let buttonLast = CustomButton(title: "Last", bgColor: .systemBlue, titleColor: .white)
+    private let buttonNext = CustomButton(title: "Next", bgColor: .white, titleColor: .black)
+    private let buttonFirst = CustomButton(title: "First", bgColor: .systemRed, titleColor: .white)
     
     var catsDataManager: CatsDataManagable
     
@@ -30,10 +30,14 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        buttonLast.nameInstance = "ButtonLast"
+        buttonNext.nameInstance = "ButtonNext"
+        buttonFirst.nameInstance = "ButtonFirst"
+        catImage.nameIstance = "CustomCatView"
+        
         view.addSubview(stackView)
         view.addSubview(buttonFirst)
         setupStackView()
@@ -42,6 +46,10 @@ class ViewController: UIViewController {
         setupImage()
         setupTextLabel()
         setupButtons()
+        
+        let viewCounter = view.countUIVewElements(buttonLast, buttonNext, buttonFirst, catImage)
+        print(viewCounter)
+        view.printAllSubviews(buttonLast, buttonNext, buttonFirst, catImage)
     }
     
     private func last() -> Cat {
