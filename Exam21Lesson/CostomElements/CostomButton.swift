@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ICostomButtonDelegate {
-    func addActions(for button: UIButton)
+    func buttonDidTap(_ button: UIButton)
 }
 
 
@@ -34,7 +34,7 @@ class CostomButton: UIButton {
     
     func actions() {
         let buttonAction = UIAction { [self] _ in
-            delegate?.addActions(for: self)
+            delegate?.buttonDidTap(self)
         }
         addAction(buttonAction, for: .touchUpInside)
     }

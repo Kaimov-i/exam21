@@ -39,10 +39,9 @@ class ViewController: UIViewController {
         setupStackView()
         setupLayout()
         setupButtonsStackView()
-        setupButtons()
-        buttonActions()
         setupImage()
         setupTextLabel()
+        setupButtons()
     }
     
     private func last() -> Cat {
@@ -115,7 +114,7 @@ private extension ViewController {
         catDescription.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
-    // MARK: - stupButtons
+    // MARK: - setup Buttons StackView
     func setupButtonsStackView() {
         buttonsStackView.distribution = .fillEqually
         buttonsStackView.axis = .horizontal
@@ -126,25 +125,13 @@ private extension ViewController {
         buttonsStackView.addArrangedSubview(buttonNext)
     }
     // MARK: Button Actions
-    func buttonActions() {
-        let lastButtonAction = UIAction { [self]  _ in
-            setupModel(cat: last())
-        }
-        
-        let nextButtonAction = UIAction { [self] _ in
-            setupModel(cat: next())
-        }
-        
-        let fierstButtonAction = UIAction { [self] _ in
-            setupModel(cat: first())
-        }
-        
-        buttonLast.addAction(lastButtonAction, for: .touchUpInside)
-        buttonNext.addAction(nextButtonAction, for: .touchUpInside)
-        buttonFirst.addAction(fierstButtonAction, for: .touchUpInside)
-    }
+ 
     //MARK: Setup Button
     func setupButtons() {
+        buttonLast.delegate = self
+        buttonNext.delegate = self
+        buttonFirst.delegate = self
+        
         buttonNext.setTitleColor(.black, for: .normal)
         buttonFirst.setTitleColor(.white, for: .normal)
         
@@ -155,7 +142,7 @@ private extension ViewController {
 
 extension ViewController: ICostomButtonDelegate {
     
-    func addActions(for button: UIButton) {
+    func buttonDidTap(_ button: UIButton) {
         
         switch button {
         case buttonLast: setupModel(cat: last())
